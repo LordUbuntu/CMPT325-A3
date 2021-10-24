@@ -10,7 +10,7 @@ As an exercise to learn socket programming for a networking course, we were task
 
 - Jacobus Burger
 - Jun Park
-- ...
+- Jared Klassen
 
 ## Usage
 
