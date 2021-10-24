@@ -9,7 +9,7 @@ As an exercise to learn socket programming for a networking course, we were task
 ## Participants
 
 - Jacobus Burger
-- ...
+- Jun Park
 - ...
 
 ## Usage
