@@ -28,7 +28,7 @@ while True:
         # Send response message for file not found
         # Fill in start
         # we assume that HTTP 1.1 is ubiquitous
-        connectionSocket.send("HTTP/1.1 404 Not Found\n")
+        connectionSocket.send("HTTP/1.1 404 Not Found\r\n")
         # Fill in end
         # Close client socket
         # Fill in start
