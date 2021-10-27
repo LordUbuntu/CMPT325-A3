@@ -5,20 +5,27 @@ import sys  # In order to terminate the program
 
 serverSocket = socket(AF_INET, SOCK_STREAM)
 # Prepare a sever socket
+
 # Fill in start
-# Fill in end
+serverSocket.bind(('127.0.0.1',8810))
+#this gives us only 1 possible connection, hence '1'
+serverSocket.listen(1)
 while True:
     # Establish the connection
-    print('Ready to serve...')
-    connectionSocket, addr =  # Fill in start #Fill in end
+    connectionSocket, addr =  serverSocket.accept()
     try:
-        message =  # Fill in start #Fill in end
+        #recieving file in packets of size 1024
+        message =  connectionSocket.recv(1024)
         filename = message.split()[1]
         f = open(filename[1:])
-        outputdata =  # Fill in start #Fill in end
+        #basic file work
+        fileData =  f.read()
+        print(fileData)
+        f.close()# Fill in start #Fill in end
         # Send one HTTP header line into socket
-        # Fill in start
-        # Fill in end
+        #OK header
+        connectionSocket.send('HTTP/1.0 200 OK\r\n')
+        #once we have read the file and closed it we can 
         # Send the content of the requested file to the client
         for i in range(0, len(outputdata)):
             connectionSocket.send(outputdata[i].encode())
@@ -36,4 +43,4 @@ while True:
         # Fill in end
         serverSocket.close()
         # Terminate the program after sending the corresponding data
-        sys.exit()
+    sys.exit()
