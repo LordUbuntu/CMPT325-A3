@@ -28,9 +28,10 @@ while True:
         # once we have read the file and closed it we can
         # Send the content of the requested file to the client
         for i in range(0, len(fileData)):
-            connectionSocket.send(outputdata[i].encode())
+            connectionSocket.send(fileData[i].encode())
             connectionSocket.send("\r\n".encode())
         connectionSocket.close()
+        serverSocket.close()
     except IOError:
         # Send response message for file not found
         # Fill in start
