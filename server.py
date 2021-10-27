@@ -7,7 +7,7 @@ serverSocket = socket(AF_INET, SOCK_STREAM)
 # Prepare a sever socket
 
 # Fill in start
-serverSocket.bind(("127.0.0.1", 8888))
+serverSocket.bind(("127.0.0.1", 8182))
 # this gives us only 1 possible connection, hence '1'
 serverSocket.listen(1)
 while True:
