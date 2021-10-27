@@ -24,13 +24,14 @@ while True:
         f.close()  # Fill in start #Fill in end
         # Send one HTTP header line into socket
         # OK header
-        connectionSocket.send("HTTP/1.0 200 OK\r\n")
+        connectionSocket.send("HTTP/1.1 200 OK\r\n".encode())
         # once we have read the file and closed it we can
         # Send the content of the requested file to the client
         for i in range(0, len(fileData)):
             connectionSocket.send(fileData[i].encode())
             connectionSocket.send("\r\n".encode())
         connectionSocket.close()
+        # this let us use the port more that one time
         serverSocket.close()
     except IOError:
         # Send response message for file not found
