@@ -20,22 +20,22 @@ while True:
         f = open(filename[1:])
         # basic file work
         fileData = f.read()
-        print(fileData)
-        f.close()  # Fill in start #Fill in end
-        # Send one HTTP header line into socket
-        # OK header
+        f.close()
+        # Send HTTP header
         connectionSocket.send("HTTP/1.1 200 OK\r\n".encode())
+        connectionSocket.send("Content-type:text/html\r\n".encode())
         # once we have read the file and closed it we can
         # Send the content of the requested file to the client
+        # sendall does the same as the for loop would
         for i in range(0, len(fileData)):
             connectionSocket.send(fileData[i].encode())
-            connectionSocket.send("\r\n".encode())
+        connectionSocket.send("\r\n".encode())
         connectionSocket.close()
     except IOError:
         # Send response message for file not found
         # Fill in start
         # we assume that HTTP 1.1 is ubiquitous
-        connectionSocket.send("HTTP/1.1 404 Not Found\r\n".encode())
+        connectionSocket.send("HTTP/1.1 404 NOT FOUND\n\nFILE NOT FOUND\r\n".encode())
         # Fill in end
         # Close client socket
         # Fill in start
