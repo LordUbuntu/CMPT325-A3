@@ -27,7 +27,7 @@ while True:
         connectionSocket.send("HTTP/1.0 200 OK\r\n")
         # once we have read the file and closed it we can
         # Send the content of the requested file to the client
-        for i in range(0, len(outputdata)):
+        for i in range(0, len(fileData)):
             connectionSocket.send(outputdata[i].encode())
             connectionSocket.send("\r\n".encode())
         connectionSocket.close()
