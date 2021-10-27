@@ -17,16 +17,19 @@ while True:
         # recieving file in packets of size 1024
         message = connectionSocket.recv(1024)
         filename = message.split()[1]
+
+        # read html file into `fileData` if it exists
         f = open(filename[1:])
-        # basic file work
         fileData = f.read()
         f.close()
+
         # Send HTTP header
         connectionSocket.send("HTTP/1.1 200 OK\r\n".encode())
         connectionSocket.send("Content-type:text/html\r\n".encode())
+
         # once we have read the file and closed it we can
         # Send the content of the requested file to the client
-        # sendall does the same as the for loop would
+        # (alternatively sendall(fileData.encode()) can replace the for loop)
         for i in range(0, len(fileData)):
             connectionSocket.send(fileData[i].encode())
         connectionSocket.send("\r\n".encode())
