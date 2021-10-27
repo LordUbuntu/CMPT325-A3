@@ -23,13 +23,16 @@ while True:
         for i in range(0, len(outputdata)):
             connectionSocket.send(outputdata[i].encode())
             connectionSocket.send("\r\n".encode())
-            connectionSocket.close()
+        connectionSocket.close()
     except IOError:
         # Send response message for file not found
         # Fill in start
+        # we assume that HTTP 1.1 is ubiquitous
+        connectionSocket.send("HTTP/1.1 404 Not Found\r\n".encode())
         # Fill in end
         # Close client socket
         # Fill in start
+        connectionSocket.close()
         # Fill in end
         serverSocket.close()
         # Terminate the program after sending the corresponding data
