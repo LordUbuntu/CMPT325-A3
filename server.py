@@ -10,7 +10,7 @@ serverSocket = socket(AF_INET, SOCK_STREAM)
 ## this is the ip of the TWU guest wifi on my computer, to run from your own computer find the IP of the network you are on and make that the first dimension of the tuple
 serverSocket.bind(("10.18.3.60", 8182))
 # this gives us only 1 possible connection, hence '1'
-serverSocket.listen(1)
+serverSocket.listen(5)
 while True:
     # Establish the connection
     connectionSocket, addr = serverSocket.accept()
