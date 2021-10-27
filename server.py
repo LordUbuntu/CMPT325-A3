@@ -7,7 +7,8 @@ serverSocket = socket(AF_INET, SOCK_STREAM)
 # Prepare a sever socket
 
 # Fill in start
-serverSocket.bind(("10.30.92.45", 8182))
+## this is the ip of the TWU guest wifi on my computer, to run from your own computer find the IP of the network you are on and make that the first dimension of the tuple
+serverSocket.bind(("10.18.3.60", 8182))
 # this gives us only 1 possible connection, hence '1'
 serverSocket.listen(1)
 while True:
