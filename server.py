@@ -32,7 +32,6 @@ while True:
             connectionSocket.send("\r\n".encode())
         connectionSocket.close()
         # this let us use the port more that one time
-        serverSocket.close()
     except IOError:
         # Send response message for file not found
         # Fill in start
@@ -43,6 +42,6 @@ while True:
         # Fill in start
         connectionSocket.close()
         # Fill in end
-        serverSocket.close()
+serverSocket.close()
         # Terminate the program after sending the corresponding data
-    sys.exit()
+sys.exit()
