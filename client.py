@@ -19,10 +19,8 @@ clientSocket.send(message.encode())
 # receive
 while True:
     htmlInfo = clientSocket.recv(1024)
-
     if not htmlInfo:
         break
-
     print(htmlInfo.decode(), end="")
 
 clientSocket.close()
