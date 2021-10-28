@@ -12,10 +12,12 @@ fileName = sys.argv[3]
 # connect
 clientSocket.connect((serverName,serverPort))
 
-# send  
-clientSocket.send(fileName.encode())
+# send
+message = "GET /" + fileName
+clientSocket.send(message.encode())
 
 # receive
-modifiedSentence = clientSocket.recv(1024)
+htmlInfo = clientSocket.recv(1024)
+print(htmlInfo.decode())
 
 clientSocket.close()
