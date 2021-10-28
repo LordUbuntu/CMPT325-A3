@@ -10,14 +10,19 @@ serverPort = int(sys.argv[2])
 fileName = sys.argv[3]
 
 # connect
-clientSocket.connect((serverName,serverPort))
+clientSocket.connect((serverName, serverPort))
 
 # send
 message = "GET /" + fileName
 clientSocket.send(message.encode())
 
 # receive
-htmlInfo = clientSocket.recv(1024)
-print(htmlInfo.decode())
+while True:
+    htmlInfo = clientSocket.recv(1024)
+
+    if not htmlInfo:
+        break
+
+    print(htmlInfo.decode(), end="")
 
 clientSocket.close()
